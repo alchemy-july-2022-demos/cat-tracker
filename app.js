@@ -30,7 +30,7 @@ async function loadPage() {
 loadPage();
 
 async function handleDelete(cat) {
-    const message = `Are you sure you want to delete "${cat.name}"?`;
+    const message = `Are you sure you want to bury "${cat.name}"?`;
     if (!confirm(message)) return;
 
     const response = await deleteCat(cat.id);

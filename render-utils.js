@@ -12,26 +12,33 @@ export function renderCatList(cats, handleDelete, handleUpdate) {
         const span = document.createElement('span');
         span.textContent = `${cat.lives} ${cat.lives === 1 ? 'life' : 'lives'}`;
 
-        const updateButton = document.createElement('button');
-        updateButton.classList.add('update-button');
-        updateButton.textContent = '💀 take life';
+        li.append(h3, span);
 
-        updateButton.addEventListener('click', () => {
-            handleUpdate(cat);
-        });
+        if (cat.lives > 0) {
+            const updateButton = document.createElement('button');
+            updateButton.classList.add('update-button');
+            updateButton.textContent = '💀 take life';
 
-        const deleteButton = document.createElement('button');
-        deleteButton.classList.add('update-button');
-        deleteButton.textContent = '⚰️ bury cat';
+            updateButton.addEventListener('click', () => {
+                handleUpdate(cat);
+            });
 
-        deleteButton.addEventListener('click', () => {
-            // GOOD: we know what "cat" this button corresponds to
-            // BAD: we need to manage state in app.js, not this
-            // render function
-            handleDelete(cat);
-        });
+            li.append(updateButton);
+        } else {
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('update-button');
+            deleteButton.textContent = '⚰️ bury cat';
 
-        li.append(h3, span, updateButton, deleteButton);
+            deleteButton.addEventListener('click', () => {
+                // GOOD: we know what "cat" this button corresponds to
+                // BAD: we need to manage state in app.js, not this
+                // render function
+                handleDelete(cat);
+            });
+
+            li.append(deleteButton);
+        }
+
         ul.append(li);
     }
 
