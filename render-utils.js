@@ -1,4 +1,4 @@
-export function renderCatList(cats) {
+export function renderCatList(cats, handleDelete) {
     const ul = document.createElement('ul');
     ul.classList.add('cat-list');
 
@@ -19,6 +19,13 @@ export function renderCatList(cats) {
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('update-button');
         deleteButton.textContent = '⚰️ bury cat';
+
+        deleteButton.addEventListener('click', () => {
+            // GOOD: we know what "cat" this button corresponds to
+            // BAD: we need to manage state in app.js, not this
+            // render function
+            handleDelete(cat);
+        });
 
         li.append(h3, span, updateButton, deleteButton);
         ul.append(li);

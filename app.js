@@ -1,4 +1,4 @@
-import { checkAuth, signOutUser, addCat, getCats } from './fetch-utils.js';
+import { checkAuth, signOutUser, addCat, getCats, deleteCat } from './fetch-utils.js';
 import { renderCatList } from './render-utils.js';
 
 /*  "boiler plate" auth code */
@@ -29,9 +29,26 @@ async function loadPage() {
 
 loadPage();
 
+async function handleDelete(cat) {
+    const message = `Are you sure you want to delete "${cat.name}"?`;
+    if (!confirm(message)) return;
+
+    const response = await deleteCat(cat.id);
+    if (!response.error) {
+        // 1 modify the array
+        const index = cats.indexOf(cat);
+        if (index !== -1) {
+            cats.splice(index, 1);
+        }
+
+        // 2 re-display the list
+        displayCats();
+    }
+}
+
 // display functions:
 function displayCats() {
-    const list = renderCatList(cats);
+    const list = renderCatList(cats, handleDelete);
     catListContainer.innerHTML = '';
     catListContainer.append(list);
 }
