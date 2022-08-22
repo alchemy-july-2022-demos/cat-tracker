@@ -1,14 +1,8 @@
-// working with supabase:
-import { checkAuth, signOutUser } from './fetch-utils.js';
-// pure rendering (data --> DOM):
+import { checkAuth, signOutUser, addCat } from './fetch-utils.js';
 
 /*  "boiler plate" auth code */
 // checking if we have a user! (will redirect to auth if not):
 checkAuth();
-// can optionally return the user:
-// const user = checkAuth();
-
-// sign out link:
 const signOutLink = document.getElementById('sign-out-link');
 signOutLink.addEventListener('click', signOutUser);
 /* end "boiler plate auth code" */
@@ -22,14 +16,25 @@ const cats = [];
 // display functions:
 
 // events:
-addCatForm.addEventListener('submit', (e) => {
+addCatForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(addCatForm);
 
-    console.log({
+    const response = await addCat({
         name: formData.get('name'),
     });
 
-    // TODO: clear form after save
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error);
+    } else {
+        const cat = response.data;
+        cats.push(cat);
+        // TODO: re-display list
+        console.log(cats);
+
+        // TODO: clear form after save
+        addCatForm.reset();
+    }
 });

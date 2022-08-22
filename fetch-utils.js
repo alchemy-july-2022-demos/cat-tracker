@@ -44,3 +44,7 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+export async function addCat(cat) {
+    return await client.from('cats').insert(cat).single();
+}
