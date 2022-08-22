@@ -1,4 +1,4 @@
-import { checkAuth, signOutUser, addCat } from './fetch-utils.js';
+import { checkAuth, signOutUser, addCat, getCats } from './fetch-utils.js';
 
 /*  "boiler plate" auth code */
 // checking if we have a user! (will redirect to auth if not):
@@ -11,9 +11,26 @@ signOutLink.addEventListener('click', signOutUser);
 const addCatForm = document.getElementById('add-cat-form');
 
 // local state:
-const cats = [];
+let cats = [];
+
+// load page
+async function loadPage() {
+    const response = await getCats();
+    if (response.error) {
+        // eslint-disable-next-line no-console
+        console.log(response.error.message);
+    } else {
+        cats = response.data;
+        displayCats();
+    }
+}
+
+loadPage();
 
 // display functions:
+function displayCats() {
+    console.log('would display list of cats...', cats);
+}
 
 // events:
 addCatForm.addEventListener('submit', async (e) => {
@@ -31,10 +48,9 @@ addCatForm.addEventListener('submit', async (e) => {
     } else {
         const cat = response.data;
         cats.push(cat);
-        // TODO: re-display list
-        console.log(cats);
+        displayCats();
 
-        // TODO: clear form after save
+        // clear form after save
         addCatForm.reset();
     }
 });
