@@ -4,9 +4,9 @@
 }
 
 .cat-item {
-    width: 300px;
+    max-width: 500px;
     display: grid;
-    grid-template-columns: auto 1fr 125px;
+    grid-template-columns: auto 1fr 125px 125px;
     gap: 15px;
     align-items: center;
 }

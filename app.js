@@ -1,4 +1,5 @@
 import { checkAuth, signOutUser, addCat, getCats } from './fetch-utils.js';
+import { renderCatList } from './render-utils.js';
 
 /*  "boiler plate" auth code */
 // checking if we have a user! (will redirect to auth if not):
@@ -9,6 +10,7 @@ signOutLink.addEventListener('click', signOutUser);
 
 // grab needed DOM elements on page:
 const addCatForm = document.getElementById('add-cat-form');
+const catListContainer = document.getElementById('cat-list-container');
 
 // local state:
 let cats = [];
@@ -29,7 +31,9 @@ loadPage();
 
 // display functions:
 function displayCats() {
-    console.log('would display list of cats...', cats);
+    const list = renderCatList(cats);
+    catListContainer.innerHTML = '';
+    catListContainer.append(list);
 }
 
 // events:
