@@ -1,0 +1,12 @@
+.cat-list {
+    background: var(--offset-color);
+    padding: 10px;
+}
+
+.cat-item {
+    width: 300px;
+    display: grid;
+    grid-template-columns: auto 1fr 125px;
+    gap: 15px;
+    align-items: center;
+}

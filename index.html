@@ -13,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/cats.css" />
     <title>Supabase Web App</title>
 </head>
 
@@ -26,7 +27,28 @@
     </header>
 
     <main>
+        <form>
+            <label>
+                <input name="name" required placeholder="cat name">
+            </label>
+            <button>Add</button>
+        </form>
 
+        <h2>Cats</h2>
+        <div id="cat-list-container">
+            <ul class="cat-list">
+                <li class="cat-item">
+                    <h3>Felix</h3>
+                    <span>7 lives</span>
+                    <button>💀 take life</button>
+                </li>
+                <li class="cat-item">
+                    <h3>Heathcliff</h3>
+                    <span>0 lives</span>
+                    <button>⚰️ bury cat</button>
+                </li>
+            </ul>
+        </div>
     </main>
 
     <footer>&copy;2022 Alchemy Software Developer</footer>
