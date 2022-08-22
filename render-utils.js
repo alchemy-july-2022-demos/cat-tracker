@@ -1,4 +1,4 @@
-export function renderCatList(cats, handleDelete) {
+export function renderCatList(cats, handleDelete, handleUpdate) {
     const ul = document.createElement('ul');
     ul.classList.add('cat-list');
 
@@ -15,6 +15,10 @@ export function renderCatList(cats, handleDelete) {
         const updateButton = document.createElement('button');
         updateButton.classList.add('update-button');
         updateButton.textContent = '💀 take life';
+
+        updateButton.addEventListener('click', () => {
+            handleUpdate(cat);
+        });
 
         const deleteButton = document.createElement('button');
         deleteButton.classList.add('update-button');

@@ -56,3 +56,7 @@ export async function getCats() {
 export async function deleteCat(id) {
     return await client.from('cats').delete().match({ id });
 }
+
+export async function updateCat(id, cat) {
+    return await client.from('cats').update(cat).match({ id }).single();
+}
