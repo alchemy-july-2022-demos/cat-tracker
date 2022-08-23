@@ -27,7 +27,7 @@ export function renderCatList(cats, handleDelete, handleUpdate) {
         } else {
             const deleteButton = document.createElement('button');
             deleteButton.classList.add('update-button');
-            deleteButton.textContent = '⚰️ bury cat';
+            deleteButton.textContent = '⚰️ reap cat';
 
             deleteButton.addEventListener('click', () => {
                 // GOOD: we know what "cat" this button corresponds to
