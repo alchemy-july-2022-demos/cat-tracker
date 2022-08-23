@@ -1,12 +1,13 @@
 :root {
-    --background: rgb(224, 234, 247);
+    --background: rgb(239, 239, 239);
     --header-background: white;
     --footer-background: rgb(243, 242, 242);
     --text-color: rgb(7, 5, 68);
     --label-color: rgb(75, 102, 98);
     --placeholder-color: rgb(136, 136, 153);
-    --offset-color: rgb(217, 236, 217);
-    --action-color: rgb(77, 132, 252);
+    --offset-background: rgb(129, 152, 181);
+    --offset-color: rgb(213, 229, 247);
+    --action-color: rgb(119, 174, 89);
 }
 
 body {
