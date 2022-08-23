@@ -49,6 +49,10 @@ main {
     padding: 20px;
 }
 
+a {
+    color: var(--text-color);
+}
+
 footer {
     position: sticky;
     bottom: 0;
